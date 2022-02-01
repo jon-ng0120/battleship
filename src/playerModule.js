@@ -21,6 +21,8 @@ class Player {
       }
     });
   };
+
+  randomAttack = () => {};
 }
 
 export default Player;

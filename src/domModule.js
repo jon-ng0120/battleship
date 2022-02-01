@@ -1,12 +1,6 @@
-'use strict';
-
 import Ship from './shipModule';
 import Gameboard from './gameboardModule';
 import Player from './playerModule';
-
-const player1 = new Player('Jon');
-const player2 = new Player('CPU');
-player2.randomShipPlacement();
 
 const createDOMGrid = (container) => {
   for (let i = 1; i <= 10; i++) {
@@ -25,7 +19,6 @@ const createDOMGrid = (container) => {
           const draggable = document.querySelector('.dragging');
           grid.appendChild(draggable);
         }
-        console.log(player1);
       });
 
       container.appendChild(grid);
@@ -51,13 +44,6 @@ document.querySelectorAll('.drag-item').forEach((item) => {
     item.classList.remove('dragging');
   });
 });
-// document.querySelector('#drag-item').addEventListener('dragstart', () => {
-//   document.querySelector('#drag-item').classList.add('dragging');
-// });
-
-// document.querySelector('#drag-item').addEventListener('dragend', () => {
-//   document.querySelector('#drag-item').classList.remove('dragging');
-// });
 
 const colorAttackedCell = (x, y, gameboard, container) => {
   const selectedCell = document.querySelector(
@@ -72,9 +58,6 @@ const colorAttackedCell = (x, y, gameboard, container) => {
     selectedCell.style.backgroundColor = 'yellow';
   }
 };
-
-createDOMGrid(document.querySelector('#gameboard-1'));
-createDOMGrid(document.querySelector('#gameboard-2'));
 
 const rotateShips = () => {
   const rotateBtn = document.querySelector('#rotate-btn');
@@ -115,4 +98,4 @@ document.querySelector('#rotate-btn').addEventListener('click', () => {
   rotateShips();
 });
 
-console.log(player2);
+export { createDOMGrid, colorAttackedCell };

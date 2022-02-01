@@ -1,4 +1,5 @@
 import Ship from './shipModule';
+import { colorShipPlacement } from './domModule';
 
 class Gameboard {
   constructor() {
@@ -9,23 +10,23 @@ class Gameboard {
   createShips = () => {
     const shipList = [
       {
-        name: 'Carrier',
+        name: 'carrier',
         length: 5,
       },
       {
-        name: 'Battleship',
+        name: 'battleship',
         length: 4,
       },
       {
-        name: 'Destroyer',
+        name: 'destroyer',
         length: 3,
       },
       {
-        name: 'Submarine',
+        name: 'submarine',
         length: 3,
       },
       {
-        name: 'Patrol Boat',
+        name: 'patrol-boat',
         length: 2,
       },
     ];
@@ -60,43 +61,43 @@ class Gameboard {
               ship,
               position: i + 1,
             };
+            // if (cpu !== true) colorShipPlacement(x + i + 1, y + 1);
           } else if (axis == 'y') {
             this.grid[y + i][x] = {
               ship,
               position: i + 1,
             };
+            // if (cpu !== true) colorShipPlacement(x + 1, y + i + 1);
           }
         }
         ship.placed = true;
+        return true;
       }
     }
   };
 
   // checks if the spot the ship is being placed is in a valid spot
-  checkForExistingShip = (xCoord, yCoord, length, axis) => {
+  checkForExistingShip = (x, y, length, axis) => {
     if (axis == 'x') {
-      const xAxisSelection = this.grid[yCoord].slice(xCoord, xCoord + length);
-      console.log(xAxisSelection);
-      console.log(xAxisSelection.every((index) => index == ''));
+      const xAxisSelection = this.grid[y].slice(x, x + length);
       return xAxisSelection.every((index) => index == '');
     } else if (axis == 'y') {
       const yAxisSelection = [];
       for (let i = 0; i < length; i++) {
-        yAxisSelection.push(this.grid[yCoord + i][xCoord]);
+        yAxisSelection.push(this.grid[y + i][x]);
       }
-      console.log(yAxisSelection);
       return yAxisSelection.every((index) => index == '');
     }
   };
 
-  checkForEnoughSpace = (xCoord, yCoord, length, axis) => {
+  checkForEnoughSpace = (x, y, length, axis) => {
     if (axis == 'x') {
       // returns the subarray of the selection and return true if the total length of it is equal passed in length
-      const xAxisSelection = this.grid[yCoord].slice(xCoord, xCoord + length);
+      const xAxisSelection = this.grid[y].slice(x, x + length);
       return xAxisSelection.length == length;
     } else if (axis == 'y') {
       // if the sum of the Y axis location and length is > 10, that means it's spilling out the board
-      return yCoord + length <= 10;
+      return y + length <= 10;
     }
   };
 

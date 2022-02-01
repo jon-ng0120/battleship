@@ -4,9 +4,70 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../src/style.css" />
     <title>Battleship</title>
   </head>
   <body>
-    <script src="main.js"></script>
+    <div id="main-container">
+      <h1>Battleship</h1>
+      <div id="gameboards">
+        <div id="gameboard-1" class="gameboard"></div>
+        <div>
+          <button id="rotate-btn" data-rotation="x">Rotate Ships</button>
+          <div id="ships-container">
+            <div id="carrier" class="drag-item" draggable="true" data-axis="x">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div
+              id="battleship"
+              class="drag-item"
+              draggable="true"
+              data-axis="x"
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div
+              id="destroyer"
+              class="drag-item"
+              draggable="true"
+              data-axis="x"
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div
+              id="submarine"
+              class="drag-item"
+              draggable="true"
+              data-axis="x"
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div
+              id="patrol-boat"
+              class="drag-item"
+              draggable="true"
+              data-axis="x"
+            >
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="gameboard-2" class="gameboard"></div>
+      </div>
+    </div>
+    <script src="main.js" defer></script>
   </body>
 </html>
