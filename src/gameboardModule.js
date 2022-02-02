@@ -103,8 +103,8 @@ class Gameboard {
 
   // receives coordinate on grid and attacks it
   receiveAttack = (xCoord, yCoord) => {
-    const x = yCoord - 1;
-    const y = xCoord - 1;
+    const x = xCoord - 1;
+    const y = yCoord - 1;
     if (typeof this.grid[y][x] == 'object') {
       const ship = this.grid[y][x].ship;
       // attacks the ship object's sections hit based on position key saved in the object within the array
