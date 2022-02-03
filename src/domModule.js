@@ -24,22 +24,10 @@ export const addDOMDragEvents = (container, player) => {
       const ship = findShip(shipName, player);
       const [xCoord, yCoord] = ele.getAttribute('xy-coord').split('-');
       if (player.gameboard.placeShip(ship, yCoord, xCoord, shipAxis)) {
-        const draggable = document.querySelector('.dragging');
-        ele.appendChild(draggable);
+        colorShipPlacement(container, player);
+        document.querySelector('.dragging').style.display = 'none';
+        console.log(player);
       }
-      console.log(player);
-    });
-  });
-};
-
-export const addDOMAttackEvent = (player, container) => {
-  const grid = container.querySelectorAll('[xy-coord]');
-  grid.forEach((ele) => {
-    ele.addEventListener('click', (e) => {
-      const [x, y] = e.target.getAttribute('xy-coord').split('-');
-      colorAttackedCell(x, y, player, container);
-      player.gameboard.receiveAttack(x, y);
-      console.log(player);
     });
   });
 };
@@ -108,4 +96,18 @@ export const rotateX = () => {
     item.setAttribute('data-axis', 'x');
   });
   shipsContainer.style.flexDirection = 'column';
+};
+
+const colorShipPlacement = (container, player) => {
+  const gameboard = player.gameboard.grid;
+  for (let i = 0; i < gameboard.length; i++) {
+    for (let j = 0; j < gameboard[i].length; j++) {
+      if (typeof gameboard[i][j] == 'object') {
+        container.querySelector(
+          `[xy-coord="${j + 1}-${i + 1}"]`
+        ).style.backgroundColor = 'silver';
+      }
+      // console.log(gameboard[i][j], i, j);
+    }
+  }
 };
