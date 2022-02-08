@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
     <title>Battleship</title>
   </head>
   <body>
     <div id="main-container">
-      <h1>Battleship</h1>
+      <h1>BATTLESHIP</h1>
       <div id="gameboards">
         <div id="gameboard-1" class="gameboard"></div>
-        <button id="start-game">Start Game</button>
-        <div>
-          <button id="rotate-btn" data-rotation="x">Rotate Ships</button>
+
+        <div id="drag-item-container">
+          <p>Drag your ships onto the board</p>
           <div id="ships-container">
             <div id="carrier" class="drag-item" draggable="true" data-axis="x">
               <div></div>
@@ -64,9 +70,26 @@
               <div></div>
             </div>
           </div>
+          <button id="rotate-btn" data-rotation="x">Rotate</button>
         </div>
 
         <div id="gameboard-2" class="gameboard"></div>
+      </div>
+      <div id="legend">
+        <div>
+          <div id="hit-icon"></div>
+          <p>Hit</p>
+        </div>
+        <div>
+          <div id="miss-icon"></div>
+          <p>Miss</p>
+        </div>
+      </div>
+      <div id="gameover-overlay">
+        <div>
+          <h1 id="winner-text"></h1>
+          <button id="play-again">Play again?</button>
+        </div>
       </div>
     </div>
     <script src="main.js" defer></script>
