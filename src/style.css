@@ -3,9 +3,28 @@
   padding: 0;
 }
 
+body {
+  font-family: 'Anton', sans-serif;
+  background-color: rgb(1, 8, 51);
+}
+
+#main-container {
+  margin-top: 3rem;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+#main-container > h1 {
+  font-size: 5rem;
+  letter-spacing: 0.5rem;
+  color: rgb(3, 152, 174);
+}
+
 #gameboards {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin-top: 5rem;
 }
 
 .gameboard {
@@ -17,57 +36,130 @@
 }
 
 .gameboard div {
-  border: 1px solid rgb(51, 51, 51);
+  border: 1px solid rgba(139, 139, 139);
   margin: 0;
   padding: 0;
 }
 
+#gameboard-1 {
+  margin-right: 4rem;
+}
+
 #gameboard-2 {
-  /* display: none; */
+  display: none;
 }
 
 #ships-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 20rem;
-  width: 30rem;
-  background-color: rgb(130, 197, 255);
+  height: 15rem;
+  width: 20rem;
+  padding: 1rem;
 }
 
 .drag-item {
   display: flex;
   height: 2.4rem; /* to accomodate for borders on gameboard */
+  background-color: #ecfbff;
 }
 
 .drag-item div {
-  border: 0.5px solid black;
+  border: 0.5px solid rgba(139, 139, 139);
   height: 100%;
-  background-color: yellow;
   width: 100%;
 }
 
 #carrier {
   width: 12.5rem;
-  margin: -2px;
 }
 
 #battleship {
   width: 10rem;
-  margin: -2px;
 }
 
 #destroyer {
   width: 7.5rem;
-  margin: -2px;
 }
 
 #submarine {
   width: 7.5rem;
-  margin: -2px;
 }
 
 #patrol-boat {
   width: 5rem;
-  margin: -2px;
+}
+
+#drag-item-container {
+  background-color: rgba(233, 233, 233, 0.4);
+  height: 23rem;
+  padding: 1rem;
+}
+
+#drag-item-container p {
+  color: rgb(238, 238, 238);
+}
+
+#gameover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameover-overlay div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 10rem;
+  width: 20rem;
+}
+
+#rotate-btn {
+  padding: 0.8rem;
+  background-color: rgb(9, 103, 117);
+  font-size: 1em;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+
+#rotate-btn:hover {
+  cursor: pointer;
+  background-color: rgb(1, 122, 141);
+}
+
+#legend {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  color: white;
+}
+
+#legend > div {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+#hit-icon,
+#miss-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.4rem;
+}
+
+#hit-icon {
+  background-color: #ff7760;
+}
+
+#miss-icon {
+  background-color: #0082ff;
 }

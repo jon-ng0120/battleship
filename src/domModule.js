@@ -1,7 +1,3 @@
-import Ship from './shipModule';
-import Gameboard from './gameboardModule';
-import Player from './playerModule';
-
 export const createDOMGrid = (container) => {
   for (let i = 1; i <= 10; i++) {
     for (let j = 1; j <= 10; j++) {
@@ -21,12 +17,13 @@ export const addDOMDragEvents = (container, player) => {
     ele.addEventListener('drop', (e) => {
       const shipName = e.dataTransfer.getData('ShipName');
       const shipAxis = e.dataTransfer.getData('ShipAxis');
+      const shipColor = e.dataTransfer.getData('ShipColor');
       const ship = findShip(shipName, player);
       const [xCoord, yCoord] = ele.getAttribute('xy-coord').split('-');
       if (player.gameboard.placeShip(ship, yCoord, xCoord, shipAxis)) {
         colorShipPlacement(container, player);
         document.querySelector('.dragging').style.display = 'none';
-        console.log(player);
+        showPlayer2Board();
       }
     });
   });
@@ -56,10 +53,10 @@ export const colorAttackedCell = (x, y, player, container) => {
   const xCoord = x - 1;
   const yCoord = y - 1;
   if (typeof player.gameboard.grid[yCoord][xCoord] == 'object') {
-    selectedCell.style.backgroundColor = 'green';
+    selectedCell.style.backgroundColor = '#FF7760';
   } else {
     // Mark board as not hit
-    selectedCell.style.backgroundColor = 'blue';
+    selectedCell.style.backgroundColor = '#0082FF';
   }
 };
 
@@ -98,6 +95,13 @@ export const rotateX = () => {
   shipsContainer.style.flexDirection = 'column';
 };
 
+export const displayGameOver = (name) => {
+  const overlay = document.querySelector('#gameover-overlay');
+  const winnerText = document.querySelector('#winner-text');
+  overlay.style.display = 'flex';
+  winnerText.textContent = `${name} wins!`;
+};
+
 const colorShipPlacement = (container, player) => {
   const gameboard = player.gameboard.grid;
   for (let i = 0; i < gameboard.length; i++) {
@@ -105,9 +109,21 @@ const colorShipPlacement = (container, player) => {
       if (typeof gameboard[i][j] == 'object') {
         container.querySelector(
           `[xy-coord="${j + 1}-${i + 1}"]`
-        ).style.backgroundColor = 'silver';
+        ).style.backgroundColor = '#ecfbff';
       }
-      // console.log(gameboard[i][j], i, j);
     }
+  }
+};
+
+const showPlayer2Board = () => {
+  const player2Board = document.querySelector('#gameboard-2');
+  const shipsContainer = document.querySelector('#drag-item-container');
+  const shipsArr = Array.from(shipsContainer.querySelectorAll('.drag-item'));
+
+  if (shipsArr.every((ship) => ship.style.display == 'none')) {
+    const rotateBtn = document.querySelector('#rotate-btn');
+    shipsContainer.style.display = 'none';
+    player2Board.style.display = 'grid';
+    rotateBtn.style.display = 'none';
   }
 };

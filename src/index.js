@@ -5,7 +5,6 @@ import Gameboard from './gameboardModule';
 import * as DOM from './domModule';
 import Player from './playerModule';
 
-const startGame = document.querySelector('#start-game');
 const player1Grid = document.querySelector('#gameboard-1');
 const player2Grid = document.querySelector('#gameboard-2');
 
@@ -50,22 +49,10 @@ player2Grid.querySelectorAll('[xy-coord]').forEach((ele) => {
       console.log(player1);
       // DOM.colorShipPlacement(player1, player1Grid);
       if (player1.gameboard.checkAllShipsSunk()) {
-        alert('Player 1 lost');
+        DOM.displayGameOver('CPU');
       } else if (player2.gameboard.checkAllShipsSunk()) {
-        alert('Player 2 lost');
+        DOM.displayGameOver('Player 1');
       }
     }
   });
 });
-
-// export const addDOMAttackEvent = (player, container) => {
-//   const grid = container.querySelectorAll('[xy-coord]');
-//   grid.forEach((ele) => {
-//     ele.addEventListener('click', (e) => {
-//       const [x, y] = e.target.getAttribute('xy-coord').split('-');
-//       colorAttackedCell(x, y, player, container);
-//       player.gameboard.receiveAttack(x, y);
-//       console.log(player);
-//     });
-//   });
-// };
