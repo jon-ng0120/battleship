@@ -9,10 +9,8 @@ body {
 }
 
 #main-container {
-  margin-top: 3rem;
+  margin-top: 1rem;
   text-align: center;
-  height: 100vh;
-  width: 100vw;
 }
 
 #main-container > h1 {
@@ -25,6 +23,7 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 5rem;
+  grid-gap: 2rem;
 }
 
 .gameboard {
@@ -39,10 +38,6 @@ body {
   border: 1px solid rgba(139, 139, 139);
   margin: 0;
   padding: 0;
-}
-
-#gameboard-1 {
-  margin-right: 4rem;
 }
 
 #gameboard-2 {
@@ -162,4 +157,21 @@ body {
 
 #miss-icon {
   background-color: #0082ff;
+}
+
+@media only screen and (max-width: 865px) {
+  #gameboards {
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+  }
+
+  .gameboard {
+    margin: auto;
+  }
+
+  #drag-item-container {
+    width: 70%;
+    margin: auto;
+  }
 }
