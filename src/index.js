@@ -9,7 +9,7 @@ const player1Grid = document.querySelector('#gameboard-1');
 const player2Grid = document.querySelector('#gameboard-2');
 
 const player1 = new Player('Jon');
-const player2 = new Player('CPU');
+const player2 = new Player('Cpu');
 
 player2.randomShipPlacement();
 
@@ -42,11 +42,7 @@ player2Grid.querySelectorAll('[xy-coord]').forEach((ele) => {
       const [x, y] = randomCoord.split('-');
       player1.gameboard.receiveAttack(x, y);
       gridOptions.splice(randomCoordIndex, 1);
-      console.log(randomCoord);
-      console.log(gridOptions);
       DOM.colorAttackedCell(x, y, player1, player1Grid);
-      console.log(x, y);
-      console.log(player1);
       // DOM.colorShipPlacement(player1, player1Grid);
       if (player1.gameboard.checkAllShipsSunk()) {
         DOM.displayGameOver('CPU');

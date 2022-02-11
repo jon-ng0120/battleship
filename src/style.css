@@ -159,6 +159,11 @@ body {
   background-color: #0082ff;
 }
 
+#play-again {
+  padding: 0.6rem;
+  margin-top: 1rem;
+}
+
 @media only screen and (max-width: 865px) {
   #gameboards {
     flex-direction: column;

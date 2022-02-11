@@ -17,7 +17,6 @@ export const addDOMDragEvents = (container, player) => {
     ele.addEventListener('drop', (e) => {
       const shipName = e.dataTransfer.getData('ShipName');
       const shipAxis = e.dataTransfer.getData('ShipAxis');
-      const shipColor = e.dataTransfer.getData('ShipColor');
       const ship = findShip(shipName, player);
       const [xCoord, yCoord] = ele.getAttribute('xy-coord').split('-');
       if (player.gameboard.placeShip(ship, yCoord, xCoord, shipAxis)) {
